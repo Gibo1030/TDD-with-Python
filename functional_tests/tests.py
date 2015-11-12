@@ -30,9 +30,7 @@ class NewVisitorTest(LiveServerTestCase):
         # She is invited to enter a to-do item straight away
         inputbox = self.browser.find_element_by_id('id_new_item')
         self.assertEqual(
-                inputbox.get_attribute('placeholder'),
-                'Enter a to-do item'
-        )
+                inputbox.get_attribute('placeholder'),'Enter a to-do item')
 
         # She types "Buy peacock feathers" into a text box (Edith's hobby
         # is tying fly-fishing lures)
@@ -57,15 +55,15 @@ class NewVisitorTest(LiveServerTestCase):
         row = table.find_elements_by_tag_name('tr')
 
         # The page updates again, and now shows both items on her list
-        self.check_for_now_in_the_list_table('1: Buy peacock feathers')
         self.check_for_now_in_the_list_table('2: Use peacock feathers to make a fly')
-
+        self.check_for_now_in_the_list_table('1: Buy peacock feathers')
+        
         #Now a new user, Francis, comes along to the site.
 
         ##We use a new browser session to make sure that no information
         ##of Edith's is coming through from cookies etc
 
-        self.browser.quitr()
+        self.browser.quit()
         self.browser = webdriver.Firefox()
 
         # Francis visits the home page. There is no sign of Ediths'
@@ -95,6 +93,5 @@ class NewVisitorTest(LiveServerTestCase):
         # Edith wonders whether the site will remember her list. Then she sees
         # that the site has generated a unique URL for her -- there is some
         # explanatory text to that effect.
-        self.fail('Finish the test!')
         # She visits that URL - her to-do list is still there.
         # Satisfied, she goes back to sleep
