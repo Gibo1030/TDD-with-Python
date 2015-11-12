@@ -29,8 +29,7 @@ class NewVisitorTest(LiveServerTestCase):
 
         # She is invited to enter a to-do item straight away
         inputbox = self.browser.find_element_by_id('id_new_item')
-        self.assertEqual(
-                inputbox.get_attribute('placeholder'),'Enter a to-do item')
+        self.assertEqual(inputbox.get_attribute('placeholder'),'Enter a to-do item')
 
         # She types "Buy peacock feathers" into a text box (Edith's hobby
         # is tying fly-fishing lures)
@@ -57,7 +56,7 @@ class NewVisitorTest(LiveServerTestCase):
         # The page updates again, and now shows both items on her list
         self.check_for_now_in_the_list_table('2: Use peacock feathers to make a fly')
         self.check_for_now_in_the_list_table('1: Buy peacock feathers')
-        
+
         #Now a new user, Francis, comes along to the site.
 
         ##We use a new browser session to make sure that no information
