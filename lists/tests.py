@@ -101,5 +101,3 @@ class NewListTest(TestCase):
 		)
 
 		self.assertRedirects(response, '/lists/%d/' % (correct_list.id,))
-
-
